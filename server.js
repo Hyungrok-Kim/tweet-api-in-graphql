@@ -9,9 +9,13 @@ const typeDefs = gql`
         query: Root
     } 
 
-    type Root {
+    type Tweet {
+        id: ID
         text: String
-        hello: String 
+    }
+
+    type Root {
+        allTweets: [Tweet]
     } 
 `; // SDL(Schema Definition Language)를 미리 정의를 해줘야 ApolloServer Error가 안남 
 

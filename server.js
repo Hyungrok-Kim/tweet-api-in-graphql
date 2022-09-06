@@ -7,11 +7,17 @@ import { ApolloServer, gql } from "apollo-server";
 const typeDefs = gql`
     schema {
         query: Root
-    } 
+    }
+
+    type User {
+        id: ID
+        username: String
+    }
 
     type Tweet {
         id: ID
         text: String
+        Author: User
     }
 
     type Root {

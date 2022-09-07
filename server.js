@@ -16,9 +16,10 @@ const resolvers = {
         allTweets() {
             return tweets;
         },
-        tweet(root, args) {
-            console.log(args);
-            return null;
+        tweet(_, { id }) {
+            console.log(`root : ${JSON.stringify(root)}`);
+            console.log(`args : ${id}`);
+            return tweets.find((tweet) => tweet.id === id);
         }
     },
 };

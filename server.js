@@ -14,6 +14,8 @@ const typeDefs = gql`
     type User {
         id: ID!
         username: String!
+        firstName: String!
+        lastName: String!
     }
 
     type Tweet {
@@ -24,7 +26,7 @@ const typeDefs = gql`
 
     type Root {
         allTweets: [Tweet!]!
-        tweet(id: ID!): Tweet!
+        tweet(id: ID!): Tweet
     }
 
     type Mutation {

@@ -12,23 +12,24 @@ const typeDefs = gql`
     }
 
     type User {
-        id: ID
-        username: String
+        id: ID!
+        username: String!
     }
 
     type Tweet {
-        id: ID
-        text: String
-        Author: User
+        id: ID!
+        text: String!
+        Author: User!
     }
 
     type Root {
-        allTweets: [Tweet]
-        tweet(id: ID): Tweet
+        allTweets: [Tweet!]!
+        tweet(id: ID!): Tweet!
     }
 
     type Mutation {
-        postTweet(text: String, userId: ID): Tweet
+        postTweet(text: String!, userId: ID!): Tweet!
+        deleteTweet(id: ID!): Boolean!
     }
 `; // SDL(Schema Definition Language)를 미리 정의를 해줘야 ApolloServer Error가 안남 
 

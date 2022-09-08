@@ -8,6 +8,10 @@ const tweets = [
     {
         id: "2",
         text: "world",
+    },
+    {
+        id: "3",
+        text: "Third Unit",
     }
 ]
 

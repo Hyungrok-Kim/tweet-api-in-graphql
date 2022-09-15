@@ -28,6 +28,10 @@ const tweets = [
     {
         id: "7",
         text: "7th Unit",
+    },
+    {
+        id: "8",
+        text: "8th Unit",
     }
 
 ]

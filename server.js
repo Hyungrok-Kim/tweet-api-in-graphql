@@ -32,8 +32,11 @@ const tweets = [
     {
         id: "8",
         text: "8th Unit",
+    },
+    {
+        id: "9",
+        text: "9th Unit"
     }
-
 ]
 
 const resolvers = {

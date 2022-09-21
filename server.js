@@ -58,6 +58,16 @@ const resolvers = {
             return tweets.find((tweet) => tweet.id === id);
         }
     },
+    Mutation: {
+        postTweet(_, {text, userId}) {
+            const newTweet = {
+                id: tweets.length + 1,
+                text,
+            };
+            tweets.push(newTweet);
+            return newTweet;
+        }
+    }
 };
 
 /**

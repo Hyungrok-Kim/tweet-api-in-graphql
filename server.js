@@ -47,34 +47,13 @@ let tweets = [
     }
 ]
 
-const resolvers = {
-    Root: {
-        allTweets() {
-            return tweets;
-        },
-        tweet(_, { id }) {
-            console.log(`root : ${JSON.stringify(root)}`);
-            console.log(`args : ${id}`);
-            return tweets.find((tweet) => tweet.id === id);
-        }
-    },
-    Mutation: {
-        postTweet(_, { text, userId }) {
-            const newTweet = {
-                id: tweets.length + 1,
-                text,
-            };
-            tweets.push(newTweet);
-            return newTweet;
-        },
-        deleteTweet(_, { id }) {
-            const tweet = tweets.find(tweet => tweet.id === id);
-            if (!tweet) return false;
-            tweets = tweets.filter(tweet => tweet.id !== id)
-            return true;
-        }
+let users = [
+    {
+        id: "1",
+        firstName: "Hyungrok",
+        lastName: "Kim",
     }
-};
+];
 
 /**
  * Alias type Query -> Root
@@ -101,6 +80,7 @@ const typeDefs = gql`
     }
 
     type Root {
+        allUsers: [User!]!
         allTweets: [Tweet!]!
         tweet(id: ID!): Tweet
     }
@@ -110,6 +90,38 @@ const typeDefs = gql`
         deleteTweet(id: ID!): Boolean!
     }
 `; // SDL(Schema Definition Language)를 미리 정의를 해줘야 ApolloServer Error가 안남.
+
+const resolvers = {
+    Root: {
+        allTweets() {
+            return tweets;
+        },
+        tweet(_, { id }) {
+            console.log(`root : ${JSON.stringify(root)}`);
+            console.log(`args : ${id}`);
+            return tweets.find((tweet) => tweet.id === id);
+        },
+        allUsers() {
+            return users;
+        },
+    },
+    Mutation: {
+        postTweet(_, { text, userId }) {
+            const newTweet = {
+                id: tweets.length + 1,
+                text,
+            };
+            tweets.push(newTweet);
+            return newTweet;
+        },
+        deleteTweet(_, { id }) {
+            const tweet = tweets.find(tweet => tweet.id === id);
+            if (!tweet) return false;
+            tweets = tweets.filter(tweet => tweet.id !== id)
+            return true;
+        }
+    }
+};
 
 const server = new ApolloServer({ typeDefs, resolvers });
 

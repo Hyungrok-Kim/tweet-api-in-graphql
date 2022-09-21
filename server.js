@@ -52,7 +52,12 @@ let users = [
         id: "1",
         firstName: "Hyungrok",
         lastName: "Kim",
-    }
+    },
+    {
+        id: "2",
+        firstName: "Gildong",
+        lastName: "Hong",
+    },
 ];
 
 /**
@@ -68,7 +73,7 @@ const typeDefs = gql`
 
     type User {
         id: ID!
-        username: String!
+        fullName: String!
         firstName: String!
         lastName: String!
     }
@@ -120,7 +125,12 @@ const resolvers = {
             tweets = tweets.filter(tweet => tweet.id !== id)
             return true;
         }
-    }
+    },
+    User: {
+        fullName({ firstName, lastName }) {
+            return `${firstName} ${lastName}`;
+        },
+    },
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });

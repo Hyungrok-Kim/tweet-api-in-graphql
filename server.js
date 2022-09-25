@@ -4,48 +4,14 @@ let tweets = [
     {
         id: "1",
         text: "hello",
+        userId: "2",
     },
     {
         id: "2",
         text: "world",
+        userId: "1",
     },
-    {
-        id: "3",
-        text: "Third Unit",
-    },
-    {
-        id: "4",
-        text: "4th Unit",
-    },
-    {
-        id: "5",
-        text: "5th Unit",
-    },
-    {
-        id: "6",
-        text: "6th Unit",
-    },
-    {
-        id: "7",
-        text: "7th Unit",
-    },
-    {
-        id: "8",
-        text: "8th Unit",
-    },
-    {
-        id: "9",
-        text: "9th Unit"
-    },
-    {
-        id: "10",
-        text: "10th Unit"
-    },
-    {
-        id: "11",
-        text: "11th Unit"
-    }
-]
+];
 
 let users = [
     {
@@ -81,7 +47,7 @@ const typeDefs = gql`
     type Tweet {
         id: ID!
         text: String!
-        Author: User
+        author: User
     }
 
     type Root {
@@ -129,6 +95,11 @@ const resolvers = {
     User: {
         fullName({ firstName, lastName }) {
             return `${firstName} ${lastName}`;
+        },
+    },
+    Tweet: {
+        author({userId}) {
+            return users.find(user => user.id === userId);
         },
     },
 };

@@ -81,6 +81,7 @@ const resolvers = {
             const newTweet = {
                 id: tweets.length + 1,
                 text,
+                userId,
             };
             tweets.push(newTweet);
             return newTweet;

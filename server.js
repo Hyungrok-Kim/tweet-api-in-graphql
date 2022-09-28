@@ -31,6 +31,9 @@ let users = [
  * type Root 안의 모든 것들은 Rest API에서 URL을 만드는 것과 같다.
  * 
  * REST에서 POST를 담당하는 스페셜 type. -> Mutation
+ * 
+ * REST API를 GraphQL으로 감싸는 방법 또한 존재. 
+ * 나중에 해보자.
  */
 const typeDefs = gql`
     schema {

@@ -1,5 +1,10 @@
 import { ApolloServer, gql } from "apollo-server";
 
+/**
+ * Join을 위한 key 추가
+ * tweets.userId === users.id 
+ * 
+ */
 let tweets = [
     {
         id: "1",
@@ -11,7 +16,7 @@ let tweets = [
         text: "world",
         userId: "1",
     },
-];
+]
 
 let users = [
     {

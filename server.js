@@ -16,6 +16,11 @@ let tweets = [
         text: "world",
         userId: "1",
     },
+    {
+        id: "3",
+        text: "testTweet",
+        userId: "1",
+    },
 ]
 
 let users = [
